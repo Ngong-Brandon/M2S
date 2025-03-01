@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
+
+    <title>M2S|Messaging</title>
+</head>
+<!-- HTML, CSS AND JS in one file -->
+ <style>
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+    :root{
+         --pink:rgba(255,195,195,1);
+        --ash:rgba(217, 217, 217, 1);
+        --red:rgba(255,6,6,1);
+        --white:rgba(255,255,255,1);
+    }
+    body{
+        background-color: var(--white);
+    }
+    .page-or{
+        display: flex;
+        flex-direction: row;
+        
+    }
+    /* chats and messaging section */
+    .chats-s{
+        width:45vw;
+        height: 100vh;
+        background-color: var(--pink);
+      
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid var(--ash);
+        transition: .5s;
+       
+
+    }
+    .messages-s{
+        width:55vw;
+        height:100vh;
+        background-color: var(--white);
+        font-family: sans-serif;
+        transition: .5s;
+
+
+    }
+    /* chats header and main chats */
+    .chats-s-header{
+        width: 100%;
+
+    }
+    .chats-s-header-m{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+       background-color: var(--red);
+        width:100%;
+       
+        height: 60%;
+        padding: .7rem;
+        color: white;
+        text-shadow: 0 2px 2px black;
+    }
+    .chats-s-header-m p{
+        font-size: 1.5rem;
+    }
+    .chats-s-main{
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        font-family: sans-serif;
+        margin-top: .5rem;
+        
+    }
+    .chats-s-main> nav{
+        display: flex;
+        flex-direction: row;
+        padding: .5rem;
+        background-color: white;
+        border-bottom: 2px solid var(--ash);
+        transition: .2s;    
+    }
+    .chats-s-main> nav:hover{
+        background-color: var(--pink);
+        border-left: 5px solid var(--red);
+        transition: .2s;
+    }
+   
+
+    .chats-s-main-img{
+        
+       
+    }
+    .chats-s-main-img img{
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+    }
+    .chats-s-main-descri{
+        width: 100%;
+        margin-left: 5px;
+        
+    }
+
+
+    ::-webkit-scrollbar{
+        width: 2px;
+        background-color: white;
+
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: var(--red);
+
+    }
+    .chats-s-header-s{
+        margin: 5px;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        
+
+    }
+    .chats-s-header-s input{
+      width: 90%;     
+      border: 0;
+      padding: .4rem;
+      outline: none;   
+    }
+    .chats-s-header-s span{
+        margin: 2px;text-align: center;
+        padding: 4px;
+        cursor: pointer;
+        transition: .2s;
+
+    }
+    .chats-s-header-s span:hover{
+      
+        transition: .2s;
+        padding: 5px; 
+        border-bottom: 1px solid black;
+       
+    }
+
+    .name-descri{
+       
+      
+        border-radius: 2px solid white;
+      
+        
+       
+
+    }
+    /* message section header */
+    .messages-s-header{
+        background-color: var(--red);
+        border-bottom: 2px solid var(--ash);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    .messages-s-header img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: .1rem;
+        border: 2px solid var(--ash);
+        }
+    .messages-s-header i{
+        margin: .1rem;
+
+
+    }
+    /* call icons */
+    .fa-calls{
+        color: white;font-size: 1.2rem;margin: .5rem;cursor: pointer;
+        transition: .2s;
+
+    }
+    .fa-calls:hover{
+        color: var(--ash);
+        transition: .2s;
+    }
+
+
+.bottom-section{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--ash);
+}
+.bottom-section span{
+    cursor: pointer;
+}
+.bottom-section nav{
+    width: 55vw;
+    padding: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.bottom-section nav span textarea{
+    width: 40vw;
+    resize: none;
+    overflow: hidden;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+
+}
+.bottom-section nav span i{
+    font-size: 1rem;
+    color: var(--red);
+    cursor: pointer;
+    transition: .2s;
+}
+.bottom-section nav span i:hover{
+    color: var(--pink);
+    transition: .2s;
+}
+/* chat-section styling */
+.chat-section-chat{
+    width: 100%;
+   overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    font-size: 14px;
+}
+.chat-section-chat nav{
+    width: 100%;
+    padding: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 60px;
+}
+.chat-section-chat nav img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: .1rem;
+    border: 2px solid var(--ash);
+  
+}
+.chat-section-chat nav >span{
+  
+    padding: .7rem;
+    /* margin: 5px; */
+    color: black;
+    font-family: sans-serif;
+    max-width: 50%;
+    word-wrap: break-word;
+}
+@media  screen and (max-width: 600px){
+    .chats-s{
+        width: 100vw !important;
+        transition: .5s;
+    }
+    .messages-s{
+        width: 100vw !important;
+        transition: .5s;
+        position: absolute !important;
+        z-index: -1;
+    }
+    .chats-s-header-m p{
+        font-size: 1rem;
+    }
+    .chats-s-main> nav{
+        padding: .3rem;
+    }
+    .chats-s-main-img img{
+        width: 50px;
+        height: 50px;
+    }
+    .chats-s-main-descri{
+        margin-left: 2px;
+        
+    }
+   
+    .chats-s-header-s input{
+       width:80%;
+        border: 0;
+        padding: .3rem;
+        outline: none;   
+      }
+      .chats-s-header-s span{
+          margin: 2px;text-align: center;
+          padding: 3px;
+          cursor: pointer;
+          transition: .2s;
+  
+      }
+      .chats-s-header-s span:hover{
+        
+          transition: .2s;
+          padding: 4px; 
+          border-bottom: 1px solid black;
+         
+      }
+      .messages-s-header img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: .1rem;
+        border: 2px solid var(--ash);
+        }
+        .messages-s-header i{
+            margin: .1rem;
+    
+    
+        }
+        .fa-calls{
+            color: white;font-size: 1rem;margin: .5rem;cursor: pointer;
+            transition: .2s;
+    
+        }
+        .fa-calls:hover{
+            color: var(--ash);
+            transition: .2s;
+        }
+        .bottom-section nav span textarea{
+            width: 70vw;
+            resize: none;
+            overflow: hidden;
+            border: 0;
+            outline: none;
+            border-radius: 5px;
+        
+        }
+        .bottom-section nav span i{
+            font-size: 1rem;
+            color: var(--red);
+            cursor: pointer;
+            transition: .2s;
+        }
+        .bottom-section nav span i:hover{
+            color: var(--pink);
+            transition: .2s;
+        }
+        .chat-section-chat nav img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+    
+        }
+        .bottom-section{
+            width: 100vw;
+          
+        }
+        .bottom-section nav{
+            width: 100vw;
+            padding: .5rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+}
+ </style>
+<body>
+
+    <section class="page-or">
+        <main class="chats-s" id="chats-s">
+            <div class="chats-s-header">
+                <nav class="chats-s-header-m">
+                    <p>Messaging</p>
+              
+                  <p style="cursor: pointer;"><i class="fa-solid fa-ellipsis-v"></i></p>
+
+
+                </nav>
+                <nav class="chats-s-header-s">
+                
+                   <span><i class="fa-solid fa-search"></i></span>
+                 <input type="text" name="" id="" placeholder="Search">
+                
+                </nav>
+
+            </div>
+            <div class="chats-s-main">
+                <nav id="users-p" class="users-p"> 
+                    <div class="chats-s-main-img" ><img src="welder.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div style="display: flex;
+        flex-direction:column;">
+
+                                <span style="padding: .3rem .3rem 0 .3rem;color: var(--red)">Kingsley Bate</span>
+                            <span style="padding: .3rem;font-size: 12px;">Welder, 2years and active. <br><span>Limbe,Cameroon</span></span>
+
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+                <nav   class="users-p">
+                    <div class="chats-s-main-img" ><img src="tiler.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div style="display: flex;
+        flex-direction:column;">
+                                <span style="padding: .3rem .3rem 0 .3rem;color:var(--red);">Bobga Mathew Bobga</span>
+                            <span style="padding: .3rem;font-size: 12px;">Tiler, 8years and active. <br><span>Bamenda,Cameroon</span></span>
+
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+                <nav class="users-p">
+                    <div class="chats-s-main-img" ><img src="baby sitter.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div style="display: flex;
+        flex-direction:column;">
+                                <span style="padding: .3rem .3rem 0 .3rem;color: var(--red);">Bisong Helen Tambi</span>
+                            <span style="padding: .3rem;font-size: 12px;">Baby sitter, 15years and active. <br><span>Bafoussam,Cameroon</span></span>
+
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+
+                <nav class="users-p">
+                    <div class="chats-s-main-img" ><img src="fashion.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">                                  
+                            <div style="display: flex;
+        flex-direction:column;">
+                                <span style="padding: .3rem .3rem 0 .3rem;color:  var(--red);">Enjema Sally Jane</span>
+                            <span style="padding: .3rem;font-size: 12px;">Fashion vendor,3years and active <br><span>Idenau,Cameroon</span></span>
+
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+
+
+                <nav class="users-p">
+                    <div class="chats-s-main-img" ><img src="midwife.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div style="display: flex;
+        flex-direction:column;">
+                                <span style="padding: .3rem .3rem 0 .3rem;color: var(--red);">Kingsley Bate</span>
+                            <span style="padding: .3rem;font-size: 12px;">Midwifery, 0years and active. <br><span>Yaounde,Cameroon</span></span>
+
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+         
+
+<!-- more navs from new users -->
+            </div>
+
+
+        </main>
+
+        <main class="messages-s" id="messages-s">
+            <div class="messages-s-header">
+                <nav style="display: flex;margin: 2px;">
+                    <span>
+
+                        <i class="fas fa-circle" style="color: var(--white);position: absolute;"></i><img src="baby sitter.jpg" alt="not supported">
+                    </span>
+                    <span>
+
+                        <span style="padding: .3rem .3rem 0 .3rem;color:  var(--white);">Enjema Sally Jane</span><br>
+                      <span style="padding: .3rem;font-size: 12px;color: var(--ash);">Fashion vendor,3years and active <br><span>Idenau,Cameroon</span></span>
+                    </span>
+                
+                </nav>
+
+                <nav style="text-align: center;display: flex;justify-content: center;align-items: center;">
+                    <span class="fa-calls"><i class="fas fa-phone-alt " ></i></span>
+                    <span class="fa-calls"><i class="fas fa-video" ></i></span>
+                </nav>
+               
+
+             </div>
+
+<!-- chats start from here and the sender chat colour is pink and he receives ash colour chats from another user -->
+            <div class="chat-section-chat">
+              <!-- voice message icon the height and width will depend on the frequency of the voice  -->
+    <nav style="justify-content: flex-start;text-align: start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;min-width: 110px"><span><i class="fa-solid fa-play"></i>||||||||||||||||||</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;display: flex;">1:54pm</span></span></nav>
+    <nav style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;"><span>Type your message here</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="midwife.jpg" alt=""> </nav>
+    <nav style="justify-content: flex-start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;"><span>Let M2S sent you notifications on work contracts, updates and activities you are interested in.</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">5:44pm</span></span></nav>
+
+                
+            </div>
+          
+            <div class="bottom-section">
+                <nav class="bottom-section-send">
+                    <span>
+                        <i class=" fas fa-paperclip"></i>
+                    </span>
+                    <span>
+                        <i class="fas fa-file-image"></i>
+                    </span> 
+                    <span>
+                        <i class="fas fa-camera-retro"></i>
+                    </span> 
+                    <span>
+                       <textarea name="" id="autoResize" placeholder="Type a message" ></textarea>
+                  
+                   </span> 
+                   <span>
+                    <i class="fas fa-paper-plane" id="send-message" style="display: none;"></i>
+                    <i class="fas fa-microphone" id="send-voice"></i>
+
+                   </span>
+                </nav>
+
+            </div>
+
+
+
+        </main>
+    </section>
+    
+
+
+
+    
+    <script>
+// get id in short form
+const getId = (id) => document.getElementById(id);
+
+
+const textarea = getId('autoResize');  
+
+function containsOnlySpaces(input){
+    return input.trim() === "";
+}
+
+
+textarea.addEventListener("input",()=>{
+    textarea.style.height = 'auto';   
+   textarea.style.height = textarea.scrollHeight + 'px';  
+
+    let message = textarea.value;
+    if(message.length > 0 || message ===""){
+        if(containsOnlySpaces(message)){
+            getId('send-message').style.display = 'none';
+            getId('send-voice').style.display = 'block';
+        }else{
+            getId('send-message').style.display = 'block';
+            getId('send-voice').style.display = 'none';
+        }
+    }else{
+        getId('send-message').style.display = 'block';
+            getId('send-voice').style.display = 'none';
+    }
+
+})
+
+const usersC = document.querySelectorAll('.users-p');
+usersC.forEach((user)=>{
+    user.addEventListener('click',()=>{
+        getId('messages-s').style.zIndex = '1';
+        getId('chats-s').style.zIndex = '-1';
+    })
+})
+
+    </script>
+</body>
+</html>
