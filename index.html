@@ -257,7 +257,7 @@
     align-self: end;
   
 }
-.chat-section-chat li >span{
+.chat-section-chat li div{
   
     padding: .7rem;
     /* margin: 5px; */
@@ -386,6 +386,26 @@
    opacity: .7;
     transition: .2s;
 }
+.sender-chat{
+   justify-content: flex-end;
+}
+.receiver-chat{
+    justify-content: flex-start;
+}
+.sender-chat div{
+    background-color: var(--pink);
+    border-radius: 7px 7px 0px 7px;
+    position: relative;
+    max-width: 70%;
+}
+.receiver-chat div{
+    background-color: var(--ash);
+    border-radius: 7px 7px 7px 0px;
+    position: relative;
+    max-width: 70%;
+}   
+
+
  </style>
 <body>
 
@@ -527,15 +547,56 @@
             <div class="chat-section-chat">
                 <ul>
 
-                    <li style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="baby sitter.jpg" alt=""> </li>
-                    <li style="justify-content: flex-start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span></li>
-                    <li style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="baby sitter.jpg" alt=""> </li>
-                    <li style="justify-content: flex-start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span></li>
+                    <li class="sender-chat">
+                         <div>
+                            <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+                            <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+                        </div><img src="baby sitter.jpg" alt=""> 
+                    </li>
+
+
+                    <li class="receiver-chat">
+                        <img src="baby sitter.jpg" alt=""> 
+                         <div>
+                            <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+                            <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+                        </div>
+                    </li>
+                    <li class="sender-chat"> <div >
+                        <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+                        <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+                      </div>
+                      <img src="baby sitter.jpg" alt=""> 
+                    </li>
+                    <li class="receiver-chat">
+                        <img src="baby sitter.jpg" alt="">  
+                        <div >
+                            <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+                            <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+                        </div>
+                    </li>
                  
                     <!-- voice message icon the height and width will depend on the frequency of the voice  -->
-        <li style="justify-content: flex-start;text-align: start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;min-width: 110px;max-width: 70%;"><span><i class="fa-solid fa-play"></i>||||||||||||||||||</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;display: flex;">1:54pm</span></span></li>
-        <li style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;max-width: 70%;"><span>Type your message here</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="midwife.jpg" alt=""> </nav>
-        <li style="justify-content: flex-start;"><img src="baby sitter.jpg"  alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;max-width: 70%;"><span>Let M2S sent you notifications on work contracts, updates and activities you are interested in.</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">5:44pm</span></span></li>
+        <li class="receiver-chat">
+            <img src="baby sitter.jpg" alt=""> 
+             <div >
+                <span><i class="fa-solid fa-play"></i>||||||||||||||||||</span>
+                 <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;display: flex;">1:54pm</span>
+                </div>
+            </li>
+        <li class="sender-chat"> 
+            <div >
+                <span>Type your message here</span>
+                 <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+                </div><img src="midwife.jpg" alt=""> 
+            </li>
+        <li class="receiver-chat">
+            <img src="baby sitter.jpg"  alt=""> 
+             <div>
+                <span>Let M2S sent you notifications on work contracts, updates and activities you are interested in.</span>
+                 <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">5:44pm</span>
+                </div>
+            </li>
                 </ul>
 
                 
