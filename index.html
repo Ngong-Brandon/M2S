@@ -190,7 +190,7 @@
     bottom: 0;
     background-color: var(--ash);
 }
-.bottom-section span{
+.bottom-section div{
     cursor: pointer;
 }
 .bottom-section nav{
@@ -201,35 +201,41 @@
     justify-content: space-evenly;
     align-items: center;
 }
-.bottom-section nav span textarea{
+.bottom-section nav div textarea{
     width: 40vw;
     resize: none;
-    overflow: hidden;
+    overflow-y: scroll;
     border: 0;
     outline: none;
     border-radius: 5px;
 
 }
-.bottom-section nav span i{
+.bottom-section nav div i{
     font-size: 1rem;
     color: var(--red);
     cursor: pointer;
     transition: .2s;
 }
-.bottom-section nav span i:hover{
+.bottom-section nav div i:hover{
     color: var(--pink);
     transition: .2s;
 }
 /* chat-section styling */
 .chat-section-chat{
     width: 100%;
+    position: relative;
    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     height: 80%;
+
     font-size: 14px;
 }
-.chat-section-chat nav{
+.chat-section-chat ul{
+    list-style: none;
+    padding: 0;
+}
+.chat-section-chat li{
     width: 100%;
     padding: .5rem;
     display: flex;
@@ -237,15 +243,16 @@
     align-items: center;
     min-height: 60px;
 }
-.chat-section-chat nav img{
+.chat-section-chat li img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
     margin: .1rem;
     border: 2px solid var(--ash);
+    align-self: end;
   
 }
-.chat-section-chat nav >span{
+.chat-section-chat li >span{
   
     padding: .7rem;
     /* margin: 5px; */
@@ -321,7 +328,7 @@
             color: var(--ash);
             transition: .2s;
         }
-        .bottom-section nav span textarea{
+        .bottom-section nav div textarea{
             width: 70vw;
             resize: none;
             overflow: hidden;
@@ -330,17 +337,17 @@
             border-radius: 5px;
         
         }
-        .bottom-section nav span i{
+        .bottom-section nav div i{
             font-size: 1rem;
             color: var(--red);
             cursor: pointer;
             transition: .2s;
         }
-        .bottom-section nav span i:hover{
+        .bottom-section nav div i:hover{
             color: var(--pink);
             transition: .2s;
         }
-        .chat-section-chat nav img{
+        .chat-section-chat li img{
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -358,6 +365,21 @@
             justify-content: space-evenly;
             align-items: center;
         }
+}
+.button-back{
+    background-color: transparent;
+    color: white;
+    border: 0;
+   text-align: center;
+    cursor: pointer;
+    transition: .2s;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.button-back:hover{
+   opacity: .7;
+    transition: .2s;
 }
  </style>
 <body>
@@ -475,6 +497,18 @@
                     </div>
                     <span>
 
+                        <button class="button-back" id="arrow-back">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </span>
+                    <span>
+
+                        <button class="button-back" id="arrow-back">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </span>
+                    <span>
+
                         <i class="fas fa-circle" style="color: var(--white);position: absolute;"></i><img src="baby sitter.jpg" alt="not supported">
                     </span>
                     <span>
@@ -486,8 +520,8 @@
                 </nav>
 
                 <nav style="text-align: center;display: flex;justify-content: center;align-items: center;">
-                    <span class="fa-calls"><i class="fas fa-phone-alt " ></i></span>
-                    <span class="fa-calls"><i class="fas fa-video" ></i></span>
+                    <div class="fa-calls"><i class="fas fa-phone-alt " ></i></div>
+                    <div class="fa-calls"><i class="fas fa-video" ></i></div>
                 </nav>
                
 
@@ -495,32 +529,42 @@
 
 <!-- chats start from here and the sender chat colour is pink and he receives ash colour chats from another user -->
             <div class="chat-section-chat">
-              <!-- voice message icon the height and width will depend on the frequency of the voice  -->
-    <nav style="justify-content: flex-start;text-align: start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;min-width: 110px"><span><i class="fa-solid fa-play"></i>||||||||||||||||||</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;display: flex;">1:54pm</span></span></nav>
-    <nav style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;"><span>Type your message here</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="midwife.jpg" alt=""> </nav>
-    <nav style="justify-content: flex-start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;"><span>Let M2S sent you notifications on work contracts, updates and activities you are interested in.</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">5:44pm</span></span></nav>
+                <ul>
+
+                    <li style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="baby sitter.jpg" alt=""> </li>
+                    <li style="justify-content: flex-start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span></li>
+                    <li style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="baby sitter.jpg" alt=""> </li>
+                    <li style="justify-content: flex-start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;max-width: 70%;"><span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span></li>
+                 
+                    <!-- voice message icon the height and width will depend on the frequency of the voice  -->
+        <li style="justify-content: flex-start;text-align: start;"><img src="baby sitter.jpg" alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;min-width: 110px;max-width: 70%;"><span><i class="fa-solid fa-play"></i>||||||||||||||||||</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;display: flex;">1:54pm</span></span></li>
+        <li style="justify-content: flex-end;"> <span style="background-color: var(--pink);border-radius: 7px 7px 0px 7px;position: relative;max-width: 70%;"><span>Type your message here</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span></span><img src="midwife.jpg" alt=""> </nav>
+        <li style="justify-content: flex-start;"><img src="baby sitter.jpg"  alt="">  <span style="background-color: var(--ash);border-radius: 7px 7px 7px 0px;position: relative;max-width: 70%;"><span>Let M2S sent you notifications on work contracts, updates and activities you are interested in.</span> <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">5:44pm</span></span></li>
+                </ul>
 
                 
             </div>
           
             <div class="bottom-section">
                 <nav class="bottom-section-send">
-                    <span>
+                    <div>
                         <i class=" fas fa-paperclip"></i>
-                    </span>
-                    <span>
+                    </div>
+                    <div>
                         <i class="fas fa-file-image"></i>
-                    </span> 
-                    
-                    <span>
+                    </div> 
+                    <div>
+                        <i class="fas fa-camera-retro"></i>
+                    </div> 
+                    <div>
                        <textarea name="" id="autoResize" placeholder="Type a message" ></textarea>
                   
-                   </span> 
-                   <span>
+                    </div> 
+                   <div>
                     <i class="fas fa-paper-plane" id="send-message" style="display: none;"></i>
                     <i class="fas fa-microphone" id="send-voice"></i>
 
-                   </span>
+                   </div>
                 </nav>
 
             </div>
@@ -547,8 +591,11 @@ function containsOnlySpaces(input){
 
 
 textarea.addEventListener("input",()=>{
-    textarea.style.height = 'auto';   
-   textarea.style.height = textarea.scrollHeight + 'px';  
+    if(textarea.clientHeight < 50){
+        textarea.style.height = 'auto';   
+       textarea.style.height = textarea.scrollHeight + 'px';  
+    }
+
 
     let message = textarea.value;
     if(message.length > 0 || message ===""){
@@ -573,11 +620,10 @@ usersC.forEach((user)=>{
         getId('chats-s').style.zIndex = '-1';
     })
 })
-function backToChats(){
+getId('arrow-back').addEventListener('click',()=>{
     getId('messages-s').style.zIndex = '-1';
     getId('chats-s').style.zIndex = '1';
-}
- 
+})
     </script>
 </body>
 </html>
