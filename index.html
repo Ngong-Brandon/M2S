@@ -91,11 +91,6 @@
         transition: .2s;
     }
    
-
-    .chats-s-main-img{
-        
-       
-    }
     .chats-s-main-img img{
         border-radius: 50%;
         width: 60px;
@@ -475,6 +470,9 @@
         <main class="messages-s" id="messages-s">
             <div class="messages-s-header">
                 <nav style="display: flex;margin: 2px;">
+                    <div class="back" onclick="backToChats()">
+                        <i class="fa fa-arrow-left"></i>
+                    </div>
                     <span>
 
                         <i class="fas fa-circle" style="color: var(--white);position: absolute;"></i><img src="baby sitter.jpg" alt="not supported">
@@ -513,9 +511,7 @@
                     <span>
                         <i class="fas fa-file-image"></i>
                     </span> 
-                    <span>
-                        <i class="fas fa-camera-retro"></i>
-                    </span> 
+                    
                     <span>
                        <textarea name="" id="autoResize" placeholder="Type a message" ></textarea>
                   
@@ -577,7 +573,11 @@ usersC.forEach((user)=>{
         getId('chats-s').style.zIndex = '-1';
     })
 })
-
+function backToChats(){
+    getId('messages-s').style.zIndex = '-1';
+    getId('chats-s').style.zIndex = '1';
+}
+ 
     </script>
 </body>
 </html>
