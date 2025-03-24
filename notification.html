@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* General Styles */
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+    :root{
+         --pink:rgba(255,195,195,1);
+        --ash:rgba(217, 217, 217, 1);
+        --red:rgba(255,6,6,1);
+        --white:rgba(255,255,255,1);
+    }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding:5px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
+}
+
+.notification-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff2f2f9;
+}
+
+h1 {
+    font-size: 24px;
+   
+    margin-bottom: 5px;
+    text-align:start;
+    background-color: var(--red);
+    padding: 1rem;
+    color: var(--white);
+    border-radius: 8px;
+}
+
+.notification {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: .3rem;
+    margin-bottom: 15px;
+    border: 1px solid var(--red);
+    margin: 5px;
+    display: flex;
+    align-items: center;
+}
+.notification div img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.notification p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.notification strong {
+    color: #333;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+button.reject, button.accept {
+    background-color: #f44336;
+    color: white;
+}
+
+button.reject:hover,b {
+    background-color: #e53935;
+}
+</style>
+<body>
+    <div class="notification-container">
+        <h1>Notifications</h1>
+
+        <!-- Trainee Request -->
+        <div class="notification">
+            <div>
+                <img src="fashion.jpg" alt="not supported">
+            </div>
+            <div>
+
+                <p>You have a trainee request from <strong>Kingsley Bate</strong></p>
+                <div class="actions">
+                    <button class="accept">Accept</button>
+                    <button class="reject">Reject</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Message -->
+        <div class="notification">
+            <div>
+                <img src="fashion.jpg" alt="not supported">
+
+            </div>
+            <div>
+
+                <p>You have a new message from <strong>Kelly San</strong></p>
+            </div>
+        </div>
+
+        <!-- New Supporter -->
+        <div class="notification">
+            <div>
+                <img src="fashion.jpg" alt="not supported">
+
+            </div>
+            <div>
+
+                <p>You have 1 new supporter from <strong>Kesley Kate</strong></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
