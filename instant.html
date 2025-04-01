@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS styles here */
+
+        *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+    :root{
+         --pink:rgba(255,195,195,1);
+        --ash:rgba(217, 217, 217, 1);
+        --red:rgba(255,6,6,1);
+        --white:rgba(255,255,255,1);
+    }
+    body{
+        background-color: #fff2f2f9;
+        user-select: none;
+        font-family: sans-serif;
+        transition: .5s;
+        
+    }
+    header .h-div{
+        background-color: var(--red);
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--white);
+    }
+    header .h-div .h-nav{
+        font-size: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        font-family: sans-serif;
+        font-weight: bold;
+
+    }
+    header .h-div .h-nav:last-child {
+        cursor: pointer;
+    }
+    .chooseanaction {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .chooseanaction div {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 1rem;
+        flex-direction: column;
+    }
+    .chooseanaction div nav {
+      
+        margin-bottom: 10px;
+        min-width: 200px;
+        text-align: center;
+        font-family: sans-serif;
+    }
+    .chooseanaction div nav:first-child {
+        color: var(--pink);
+        margin-bottom: 0 !important;
+        padding: 5px;
+    }
+    .chooseanaction div nav:nth-child(2):hover,
+    .chooseanaction div nav:nth-child(3):hover{
+        border: 1px solid var(--ash);
+        transition: .2s;
+        
+        
+    }
+    
+    .chooseanaction div nav:nth-child(2),
+    .chooseanaction div nav:nth-child(3) {
+        background-color: var(--red);
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 10px;
+        color: var(--white);
+    }
+    .input-contract {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: .5rem;
+    }
+
+    .input-contract .entry-div {
+        flex: 1;
+        background-color: var(--white);
+        padding: 1rem;
+        border-radius: 5px;
+        max-width: 500px;
+        margin: 2rem 0 2rem 0;
+    }
+    .input-contract .entry-div  p{
+        font-weight: bold;
+    }
+
+    .input-contract .entry-div form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+    .input-contract .entry-div form nav,
+    .input-contract .entry-div form input,
+    .input-contract .entry-div form select,
+    .input-contract .entry-div form div {
+        padding: 10px;
+        border-radius: 5px;
+     
+        cursor: pointer;
+        width: 100%; 
+        position: relative;
+        outline: none;
+    }
+    .input-contract .entry-div form input{
+        border: 1px solid var(--ash);
+
+    }
+    .input-contract .entry-div form nav,.input-contract .entry-div form div button{
+        background-color: var(--red);
+        color: var(--ash);
+        border: 0;
+    }
+    .input-contract .entry-div form div button{
+        border: 1px solid var(--red) !important;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: transparent;
+  
+        color: var(--red);
+        border: 0;
+
+    }
+   
+
+    .input-contract .entry-div form div{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+
+    }
+    .input-contract .entry-div form div button:hover{
+        opacity: 0.5;
+        transition: .2s;
+    }
+    .input-contract .entry-div form nav textarea{
+        background-color: var(--white);
+        display: none;
+        position: absolute;
+        transition: .2s;
+        width: 100%;
+        z-index: 2;
+        resize: none;
+        height: 150px;
+        outline: none;
+
+    }
+    .input-contract .entry-div form nav:active textarea ,.input-contract .entry-div form nav:hover textarea{
+        transition: .2s;
+        display: block;
+    }
+
+    @media screen and (max-width: 600px){
+        .input-contract,.c-agree {
+            flex-direction: column;
+            gap: 1rem;
+        }
+       
+        
+    }
+    .c-agree {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+    .c-agree div{
+        position: relative;
+
+    }
+  
+    .c-agree> div:nth-child(1){
+       margin: 1rem;
+       display: flex;
+       gap: 1rem;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+
+    }
+    .c-agree> div:nth-child(1) div >button{
+        background-color: var(--ash);
+        color: var(--red);
+        border: 0;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        min-width: 150px;
+    }
+    .c-agree> div:nth-child(1) >button{
+        background-color: var(--red);
+        color: var(--ash);
+        border: 0;
+        padding: 10px;
+        border-radius: 5px;
+        min-width: 200px;
+        transition: .2s;
+        cursor: pointer;
+    }
+    .c-agree> div:nth-child(1) >button:hover{
+       letter-spacing: 1px;
+        transition: .2s;
+
+    }
+    select option{
+        background-color: var(--pink);
+    }
+
+
+    </style>
+</head>
+<body  style="height: 100vh;">
+    <!--  HTML content here -->
+      <header>
+        <div class="h-div">
+            <nav class="h-nav">Contract</nav>
+            <nav class="h-nav"><i class="fas fa-ellipsis-v"></i></nav>
+        </div>
+      </header>
+
+      <section>
+        <main>
+            <div class="chooseanaction">
+                <div>
+                    <nav>Choose an action</nav>
+                    <nav>Instant Service</nav>
+                    <nav>Book me</nav>
+                </div>
+            </div>
+
+        </main>
+        <hr>
+        <main class="input-contract">
+
+            <div class="entry-div">
+                <p>Skill Seeker</p>
+                <form>
+                    <!-- Form content  -->
+                     <nav>
+                        Problem Description
+                        <textarea name="textarea" id="textarea-p" required placeholder="Type a vivid description of what you need or your problem here"></textarea>
+                     </nav>
+                     <input type="text" name="amount" id="input-amount" placeholder="Type your amount:FCFA">
+
+                     <select name="select-pay" id="select-pay">
+                        <option value="bank">Bank to Bank</option>
+                        <option value="momo">MTN Momo</option>
+                        <option value="orange">Orange Money</option>
+                        <option value="cash">Cash in hand</option>
+
+                     </select>
+                     <select name="select-terms" id="select-terms">
+                        <option value="full">Full payment at end of work</option>
+                        <option value="one-quarter">1/4 then the rest at end</option>
+                        <option value="half">1/2 at start and 1/2 at end</option>
+                       
+
+                     </select>
+                     <div>
+                       <button>Edit</button>
+                       <button>Verify</button>
+                       
+                     </div>
+                </form>
+            </div>
+            <div class="entry-div">
+                <p>
+                    Skill Provider
+                </p>
+                <form>
+                    <!-- Form content  -->
+
+                    <div>
+                       <button>Availaible</button>
+                        <button>Not available</button>
+
+                    </div>
+                   <div>
+                    <button>Accepted</button>
+                    <input type="text" name="amount" id="input-amount" placeholder="Type your amount:FCFA" required>
+                   </div>
+                    <div>
+
+                       <button>accepted</button>
+                        <select name="pay-cl" id="pay-cl">
+                            <option  value="bank">Bank to Bank</option>
+                            <option value="momo">MTN Momo</option>
+                            <option value="orange">Orange Money</option>
+                            <option value="cash">Cash in hand</option>
+                        </select>
+
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Work Duration">
+                        <input type="text" placeholder="Day of Delivery">
+
+                    </div>
+
+                    <div>
+                       <button>Verify</button>
+                       <button>Edit</button>
+
+
+                    </div>
+                </form>
+            </div>
+
+        </main>
+        <hr>
+        <main class="c-agree">
+           
+            
+            <div>
+                <div>
+                    <button><i class="fas fa-handshake"></i></button>
+                    <button><i class="fas fa-map-marker-alt"></i></button>
+                    
+                    
+                </div>
+                <button>Contract successful!</button>
+                
+            </div>
+            <div> <a href="#">Contract terms between users</a></div>
+          
+
+
+        </main>
+
+      </section>
+ 
+
+    <script>
+        //  JavaScript code here
+    </script>
+</body>
+</html>
