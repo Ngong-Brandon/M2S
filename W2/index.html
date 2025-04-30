@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
+
+    <title>M2S|Messaging</title>
+</head>
+<!-- HTML, CSS AND JS in one file -->
+ <style>
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+    :root{
+         --pink:rgba(255,195,195,1);
+        --ash:rgba(217, 217, 217, 1);
+        --red:rgba(255,6,6,1);
+        --white:rgba(255,255,255,1);
+    }
+    body{
+        background-color: var(--white);
+        user-select: none;
+        
+    }
+    .page-or{
+        display: flex;
+        flex-direction: row;
+        
+    }
+    /* chats and messaging section */
+    .chats-s{
+        width:45vw;
+        height: 100vh;
+        background-color: var(--pink);
+      
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid var(--ash);
+        transition: .5s;
+       
+
+    }
+    .messages-s{
+        width:55vw;
+        height:100vh;
+        background-color: var(--white);
+        font-family: sans-serif;
+        transition: .5s;
+
+
+    }
+    /* chats header and main chats */
+    .chats-s-header{
+        width: 100%;
+
+    }
+    .chats-s-header-m{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+       background-color: var(--red);
+        width:100%;
+       
+        height: 60%;
+        padding: .7rem;
+        color: white;
+        text-shadow: 0 2px 2px black;
+    }
+    .chats-s-header-m p{
+        font-size: 1.5rem;
+    }
+    .chats-s-main{
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        font-family: sans-serif;
+        margin-top: .5rem;
+        
+    }
+    .chats-s-main> nav{
+        display: flex;
+        flex-direction: row;
+        padding: .5rem;
+        background-color: white;
+        border-bottom: 2px solid var(--ash);
+        transition: .2s;    
+    }
+    .chats-s-main> nav:hover, .chats-s-main> nav:active{
+        background-color: var(--ash);
+        transition: .2s;
+    }
+   
+    .chats-s-main-img img{
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+    }
+    .chats-s-main-descri{
+        width: 100%;
+        margin-left: 5px;
+        
+    }
+
+
+    ::-webkit-scrollbar{
+        width: 2px;
+        background-color: white;
+
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: var(--red);
+
+    }
+    .chats-s-header-s{
+        margin: 5px;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        
+
+    }
+    .chats-s-header-s input{
+      width: 90%;     
+      border: 0;
+      padding: .4rem;
+      outline: none;   
+    }
+    .chats-s-header-s span{
+        margin: 2px;text-align: center;
+        padding: 4px;
+        cursor: pointer;
+        transition: .2s;
+
+    }
+    .chats-s-header-s span:hover{
+      
+        transition: .2s;
+        padding: 5px; 
+        border-bottom: 1px solid black;
+       
+    }
+
+    .name-descri{
+       
+      
+        border-radius: 2px solid white;
+      
+        
+       
+
+    }
+    /* message section header */
+    .messages-s-header{
+        background-color: var(--red);
+        border-bottom: 2px solid var(--ash);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    
+    .messages-s-header img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: .1rem;
+        border: 2px solid var(--ash);
+        }
+    .messages-s-header i{
+        margin: .1rem;
+
+
+    }
+    /* call icons */
+    .fa-calls{
+        color: white;font-size: 1.2rem;margin: .5rem;cursor: pointer;
+        transition: .2s;
+
+    }
+    .fa-calls:hover{
+        color: var(--ash);
+        transition: .2s;
+    }
+
+
+.bottom-section{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--ash);
+}
+.bottom-section div{
+    cursor: pointer;
+}
+.bottom-section nav{
+    width: 55vw;
+    padding: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.bottom-section nav div textarea{
+    width: 40vw;
+    resize: none;
+    overflow-y: scroll;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+
+}
+.bottom-section nav div i{
+    font-size: 1rem;
+    color: var(--red);
+    cursor: pointer;
+    transition: .2s;
+}
+.bottom-section nav div i:hover{
+    color: var(--pink);
+    transition: .2s;
+}
+/* chat-section styling */
+.chat-section-chat{
+    width: 100%;
+    position: relative;
+   overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+.chat-section-chat ul{
+    list-style: none;
+    padding: 0;
+}
+.chat-section-chat li{
+    width: 100%;
+    padding: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 60px;
+}
+.chat-section-chat li img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: .1rem;
+    border: 2px solid var(--ash);
+    align-self: end;
+  
+}
+.chat-section-chat li div{
+  
+    padding: .7rem;
+    /* margin: 5px; */
+    color: black;
+    font-family: sans-serif;
+    max-width: 50%;
+    word-wrap: break-word;
+}
+@media  screen and (max-width: 600px){
+    .chats-s{
+        width: 100vw !important;
+        transition: .5s;
+    }
+    .messages-s{
+        width: 100vw !important;
+        transition: .5s;
+        position: absolute !important;
+        z-index: -1;
+    }
+    .chats-s-header-m p{
+        font-size: 1rem;
+    }
+    .chats-s-main> nav{
+        padding: .3rem;
+    }
+    .chats-s-main-img img{
+        width: 50px;
+        height: 50px;
+    }
+    .chats-s-main-descri{
+        margin-left: 2px;
+        
+    }
+   
+    .chats-s-header-s input{
+       width:80%;
+        border: 0;
+        padding: .3rem;
+        outline: none;   
+      }
+      .chats-s-header-s span{
+          margin: 2px;text-align: center;
+          padding: 3px;
+          cursor: pointer;
+          transition: .2s;
+  
+      }
+      .chats-s-header-s span:hover{
+        
+          transition: .2s;
+          padding: 4px; 
+          border-bottom: 1px solid black;
+         
+      }
+      .messages-s-header img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: .1rem;
+        border: 2px solid var(--ash);
+        }
+        .messages-s-header i{
+            margin: .1rem;
+    
+    
+        }
+        .fa-calls{
+            color: white;font-size: 1rem;margin: .5rem;cursor: pointer;
+            transition: .2s;
+    
+        }
+        .fa-calls:hover{
+            color: var(--ash);
+            transition: .2s;
+        }
+        .bottom-section nav div textarea{
+            width: 70vw;
+            resize: none;
+            overflow: hidden;
+            border: 0;
+            outline: none;
+            border-radius: 5px;
+        
+        }
+        .bottom-section nav div i{
+            font-size: 1rem;
+            color: var(--red);
+            cursor: pointer;
+            transition: .2s;
+        }
+        .bottom-section nav div i:hover{
+            color: var(--pink);
+            transition: .2s;
+        }
+        .chat-section-chat li img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+    
+        }
+        .bottom-section{
+            width: 100vw;
+          
+        }
+        .bottom-section nav{
+            width: 100vw;
+            padding: .5rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+}
+.button-back{
+    background-color: transparent;
+    color: white;
+    border: 0;
+   text-align: center;
+    cursor: pointer;
+    transition: .2s;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.button-back:hover{
+   opacity: .7;
+    transition: .2s;
+}
+.sender-chat{
+   justify-content: flex-end;
+}
+.receiver-chat{
+    justify-content: flex-start;
+}
+.sender-chat div{
+    background-color: var(--pink);
+    border-radius: 7px 7px 0px 7px;
+    position: relative;
+    max-width: 70%;
+}
+.receiver-chat div{
+    background-color: var(--ash);
+    border-radius: 7px 7px 7px 0px;
+    position: relative;
+    max-width: 70%;
+}   
+
+.name-descri div{ 
+    display: flex;
+    flex-direction:column;
+   justify-content: center;
+
+
+
+}
+.name-descri div span{
+    padding: .3rem .3rem 0 .3rem;
+    color: var(--red);
+    border-bottom: 2px solid var(--pink);
+    font-weight: bold;
+
+}
+
+.main-chat-header-s{
+    width: 100%;
+
+}
+.main-chat-header-s nav{
+    display:flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid skyblue;
+    padding: 2px;
+}
+.main-chat-header-s nav button{
+    border-radius: 5px;
+    border: 0;
+    background-color: gray;
+    padding: 5px;
+    width: 50%;
+    margin: 2px;
+    transition: .2s;
+    cursor: pointer;
+}
+.main-chat-header-s nav button:active{
+    background-color: var(--pink);
+    transition: .2s;
+}
+.main-header-add{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid skyblue;
+   
+
+
+}
+.main-header-add button{
+    background-color: var(--ash);
+    border:0;
+    border-radius: 3px;
+    margin: 4px;
+    padding: 5px;
+    transition: .2s;
+    cursor: pointer;
+    width: 30%;
+   align-items: center;
+    justify-content: center;
+    display: flex;
+   flex-shrink: .5;
+
+}
+.main-header-add button:active{
+    background-color: var(--pink);
+    transition: .2s;
+}
+
+.name-descri p{
+    font-size: 14px;
+    color: grey;
+}
+.chat-services-s{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+}
+.chat-services-chat{
+    width: 90%;
+    /* overflow-y: scroll; */
+
+}
+.chat-services-ico{
+    width: 9%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: var(--ash);
+    border-radius: 5px 0 0 5px;
+    right: 0;
+    position: absolute;
+    font-size: 1rem;
+    justify-content: space-evenly;
+    height: 50vh;
+    align-items: center;
+    border-left: 2px solid white;
+    
+}
+.chat-services-ico i{
+    font-size: 1.2rem;
+    transition: .2s;
+
+}
+.chat-services-ico i:hover{
+    color: var(--pink) !important;
+    transition: .2s;
+}
+.chat-services-chat li{
+    background-color: var(--ash);
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.chat-services-chat li video{
+    width: 100%;
+    
+}
+.chat-services-chat li  div{
+    position: absolute;
+    width:0;
+    height: 0;
+    padding: 0 !important;
+    border-width: 30px 0 30px 40px;
+    border-color: transparent transparent transparent var(--ash);
+    cursor: pointer;
+   border-style: solid;
+   z-index: 2;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+}
+
+#sChats,#addChats,#bottomS{
+   display: none;
+
+}
+
+ </style>
+<body>
+
+    <section class="page-or">
+        <main class="chats-s" id="chats-s">
+            <div class="chats-s-header">
+                <nav class="chats-s-header-m">
+                    <p>Teams</p>
+              
+                  <p style="cursor: pointer;"><i class="fa-solid fa-ellipsis-v"></i></p>
+
+
+                </nav>
+                <nav class="chats-s-header-s">
+                
+                   <span><i class="fa-solid fa-search"></i></span>
+                 <input type="text" name="" id="" placeholder="Search">
+                
+                </nav>
+
+            </div>
+            <div class="chats-s-main">
+                <nav id="users-p" class="users-p"> 
+                    <div class="chats-s-main-img" ><img src="welder.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div >
+
+                                <span >Electrician Squad Buea</span>
+                               <p>Where do oyu want to go and work</p>
+                              
+
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+                <nav   class="users-p">
+                    <div class="chats-s-main-img" ><img src="tiler.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div >
+                                <span>Buea Decking Boys</span>
+                                <p>hahahahahahaha</p>
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+                <nav class="users-p">
+                    <div class="chats-s-main-img" ><img src="baby sitter.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div>
+                                <span >Pro Developers</span>
+                             <p>we are having a new contract</p>
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+
+                <nav class="users-p">
+                    <div class="chats-s-main-img" ><img src="fashion.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">                                  
+                            <div>
+                                <span >Limbe Dance Crew</span>
+                               <p>we all have practice today by 2pm</p>
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+
+
+
+                <nav class="users-p">
+                    <div class="chats-s-main-img" ><img src="midwife.jpg" alt="not supported"></div>
+                    <div class="chats-s-main-descri">
+                        <nav class="name-descri">
+                            <div >
+                                <span >Electrician Squard Buea</span>
+                                <p>ok boss</p>
+
+                            </div>
+                        </nav>
+                    </div>
+
+                </nav>
+         
+
+<!-- more navs from new users -->
+            </div>
+
+
+        </main>
+
+        <main class="messages-s" id="messages-s">
+            <div>
+         
+            <div class="messages-s-header">
+                <nav style="display: flex;margin: 2px;">
+                
+                 
+                    <span>
+
+                        <button class="button-back" id="arrow-back">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                  
+                        <span style="padding: .3rem .3rem 0 .3rem;color:  var(--white);font-size: 1.5rem;font-weight: bold;">Electrician Squard Buea</span><br>
+                    </span>
+
+                    
+                </nav>
+                <nav>
+                    <span>
+    
+                        <img src="welder.jpg" alt="not supported">
+                    </span>
+
+                </nav>
+
+             
+
+             </div>
+
+             <div class="main-chat-header-s">
+                <nav>
+                    <button onclick="showServices()">Team services</button>
+                    <button onclick="showChats()">Team Chat</button>
+                </nav>
+
+             </div>
+             <div class="main-header-add" id="addChats">
+                <button><span style="font-weight: bold;">Team Leader:</span> <span>Ambe Godwill</span></button>
+                <button><span style="font-weight: bold;">Members:</span> <span>25</span></button>
+                <button>Add <button style="background-color: var(--ash);border: 0;">  <i class="fa-solid fa-ellipsis-v"></i></button></button>
+             
+
+             </div>
+             </div>
+
+<!-- chats start from here and the sender chat colour is pink and he receives ash colour chats from another user -->
+            <div class="chat-section-chat" id="chatschat">
+        
+
+        <div class="chat-services-s" id="sServices">
+            <div class="chat-services-chat">
+
+                <ul>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eum libero a. Nihil rem tempore atque neque illo hic aut rerum voluptas deserunt dignissimos iusto quia aperiam odio iste, aliquid quae ipsam et recusandae quo ratione exercitationem labore voluptate commodi nam! Assumenda dignissimos laboriosam ipsa! Nesciunt ab eveniet inventore blanditiis, nihil odio ipsam praesentium, placeat fugiat veniam maxime perspiciatis necessitatibus officiis neque. Omnis cumque provident voluptatum culpa corporis, dolore recusandae veritatis iusto similique non sapiente aut ipsum cum atque? Doloremque tenetur laborum dolore nulla deserunt recusandae nobis iure voluptatem aliquid. Ipsa odio eius doloremque provident ab incidunt recusandae quis pariatur!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate id, deserunt dolorum odio alias voluptate corporis vitae tempora quidem facere?</li>
+        
+                  <li><video poster="welder.jpg" onclick="playvid()" id="vid" >
+                    <source src="video.mp4" type="video/mp4">
+                     </video> <div id="playbtn"  onclick="playvid()"></div></li>
+                </ul>
+            </div>
+
+            <div class="chat-services-ico" >
+                <i class="fas fa-briefcase" style="color: red"></i>
+                <i class="fas fa-star" style="color: yellow;"></i>
+                <i class="fas fa-prescription" style="color: red;"></i>
+                <i class="fas fa-text-height" style="color: blue;"></i>
+                <i class="fas fa-tint" style="color: red;"></i>
+
+
+            </div>
+        </div>
+
+        <div id="sChats">    
+              <ul>
+
+            <li class="sender-chat">
+                <div>
+                   <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+                   <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+               </div><img src="baby sitter.jpg" alt=""> 
+           </li>
+
+
+           <li class="receiver-chat">
+              <img src="baby sitter.jpg" alt=""> 
+                <div>
+                   <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+                   <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+               </div>
+           </li>
+           <li class="sender-chat"> <div >
+               <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+               <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+             </div>
+             <img src="baby sitter.jpg" alt=""> 
+           </li>
+           <li class="receiver-chat">
+               <img src="baby sitter.jpg" alt="">  
+               <div >
+                   <span>Hi, I am interested in your fashion products. Can you send me some pictures of your products?</span> 
+                   <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+               </div>
+           </li>
+         
+           <!-- voice message icon the height and width will depend on the frequency of the voice  -->
+<li class="receiver-chat">
+   <img src="baby sitter.jpg" alt=""> 
+    <div >
+       <span><i class="fa-solid fa-play"></i>||||||||||||||||||</span>
+        <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;display: flex;">1:54pm</span>
+       </div>
+   </li>
+<li class="sender-chat"> 
+   <div >
+       <span>Type your message here</span>
+        <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">3:30pm</span>
+       </div><img src="midwife.jpg" alt=""> 
+   </li>
+<li class="receiver-chat">
+   <img src="baby sitter.jpg"  alt=""> 
+    <div>
+       <span>Let M2S sent you notifications on work contracts, updates and activities you are interested in.</span>
+        <span style="font-size: 10px;position: absolute;bottom: 1px;right: 2px;">5:44pm</span>
+       </div>
+   </li> 
+       </ul>
+</div>
+
+                
+            </div>
+          
+            <div class="bottom-section" id="bottomS">
+                <nav class="bottom-section-send">
+                    <div>
+                        <i class=" fas fa-paperclip"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-file-image"></i>
+                    </div> 
+                    <div>
+                        <i class="fas fa-camera-retro"></i>
+                    </div> 
+                    <div>
+                       <textarea name="" id="autoResize" placeholder="Type a message" ></textarea>
+                  
+                    </div> 
+                   <div>
+                    <i class="fas fa-paper-plane" id="send-message" style="display: none;"></i>
+                    <i class="fas fa-microphone" id="send-voice"></i>
+
+                   </div>
+                </nav>
+
+            </div>
+
+
+
+        </main>
+    </section>
+    
+
+
+
+    
+    <script>
+// get id in short form
+const getId = (id) => document.getElementById(id);
+
+
+const textarea = getId('autoResize');  
+
+function containsOnlySpaces(input){
+    return input.trim() === "";
+}
+
+
+textarea.addEventListener("input",()=>{
+    if(textarea.clientHeight < 50){
+        textarea.style.height = 'auto';   
+       textarea.style.height = textarea.scrollHeight + 'px';  
+    }
+
+
+    let message = textarea.value;
+    if(message.length > 0 || message ===""){
+        if(containsOnlySpaces(message)){
+            getId('send-message').style.display = 'none';
+            getId('send-voice').style.display = 'block';
+        }else{
+            getId('send-message').style.display = 'block';
+            getId('send-voice').style.display = 'none';
+        }
+    }else{
+        getId('send-message').style.display = 'block';
+            getId('send-voice').style.display = 'none';
+    }
+
+})
+
+const usersC = document.querySelectorAll('.users-p');
+usersC.forEach((user)=>{
+    user.addEventListener('click',()=>{
+        getId('messages-s').style.zIndex = '1';
+        getId('chats-s').style.zIndex = '-1';
+    })
+})
+getId('arrow-back').addEventListener('click',()=>{
+    getId('messages-s').style.zIndex = '-1';
+    getId('chats-s').style.zIndex = '1';
+})
+
+
+
+function playvid(){
+     let  video = getId('vid');
+    if(video.paused){
+        
+        video.play();
+        getId('playbtn').style.zIndex = '-1';
+    }
+    else{
+        video.pause();
+    getId('playbtn').style.zIndex = '1';
+
+    }
+    
+}
+
+function showServices() {
+  
+    getId('sServices').style.display = "contents";
+   getId('chatschat').style.height = "95%"
+    getId('sChats').style.display = "none";
+    getId('addChats').style.display = "none";
+    getId('bottomS').style.display = "none";
+
+    
+}
+function showChats() {
+  
+  getId('sServices').style.display = "none";
+  getId('sChats').style.display = "contents";
+  getId('sChats').style.height = "70% !important";
+  getId('addChats').style.display = "flex";
+  getId('chatschat').style.height = "70%"
+  getId('bottomS').style.display = "flex";
+
+  
+}
+    </script>
+</body>
+</html>
